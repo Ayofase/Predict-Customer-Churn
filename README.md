@@ -1,4 +1,4 @@
-# Analyzing Customer Churn in a Telecom Company with Streaming Services
+# Analyzing Customer Churn in a Telecom Company: Insights with a Focus on Streaming Service Subscribers
 
 ### Project Goal
 Analyze customer behavior and service usage to understand churn drivers and develop data-driven recommendations for improving customer retention, with a focus on streaming service subscribers.
