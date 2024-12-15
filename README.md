@@ -12,7 +12,7 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
  - The raw data contains 7043 rows (customers) and 21 columns (features).
 
 ### Tools
- - Excel
+ - Excel - Data Cleaning
  - SQL Server
  - R 
  - Tableau
@@ -26,3 +26,4 @@ Data cleaning process with the use of Excel to critical ensure good data quality
    - Checked for missing values using conditional formatting. No missing values found especially in the primary key customer_id
 #### 3. **Remove Duplicates in the primary id column, customer_id**
    - No duplicate fund in the primary id column.
+## Data Manipulation
