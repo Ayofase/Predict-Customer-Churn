@@ -12,27 +12,17 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
  - The raw data contains 7043 rows (customers) and 21 columns (features).
 
 ### Tools
-- Excel
-- SQL Server
-- R 
-- Tableau
+ - Excel
+ - SQL Server
+ - R 
+ - Tableau
 
 ## Data Cleaning and Exploration
 Data cleaning process with the use of Excel to critical ensure good data quality and consistency before analysis. Below are the steps used for cleaning and preparing the dataset
-
 #### 1. **Standardize Data Types**
- - - Replace column name from CamelCase to snake_case and changing all column title to lower case since SQL and R.
-   - Date column standardise to date format.
-   - Remove commas from numeric column (eg. Streaming_revenue and hours_viewed) in the revenue and engagement dataset for consistency
-   - Standardise all column title to text.
-   
+ - Replace column name from CamelCase to snake_case and changing all column title to lower case since SQL and R.
+   - tenure, monthly_charges, total_charges column standardise to numeric format.   
 #### 2. **Handling Missing Values**
-   - Using Conditional Formatting in Microsoft Excel to highlight missing values. 9,836 missing release date data where found for both tv show and movies data with a total row number of 16,163
-   - **TMDb API Integration:**
-Missing release dates for movies and tv shows were retrieved using the TMDb API. [R](#netflix_tv_movie_tmdb.R) was implemented to perform this integration using the `httr` package for making API requests and the `jsonlite` package for parsing JSON responses from the TMDb API. If no matches were found for a title the corresponding release date field for that title was set to NA. 
-#### 3. **Remove Duplicates in the primary id column, date in revenue data and title in engagement data**
+   - Using Conditional Formatting in Microsoft Excel to highlight missing values. no missing values found especially in the primary key customer_id
+#### 3. **Remove Duplicates in the primary id column, customer_id**
    - No duplicate fund in the primary id column.
-#### 4. **Replacing NA**
-   - Replace NA in the release_date column in the revenue data which was as a result of unmatched titles from TMDb API integration process.
-#### 5. **Flitering out irrelevant data**
-   - Remove irrelevant data in the release date (any year below 2019) column and availability columns in engagement dataset
