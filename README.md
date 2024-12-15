@@ -20,9 +20,9 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 ## Data Cleaning and Exploration
 Data cleaning process with the use of Excel to critical ensure good data quality and consistency before analysis. Below are the steps used for cleaning and preparing the dataset
 #### 1. **Standardize Data Types**
- - Replace column name from CamelCase to snake_case and changing all column title to lower case since SQL and R.
-   - tenure, monthly_charges, total_charges column standardise to numeric format.   
+ - Renamed columns from CamelCase to snake_case (e.g., 'CustomerID' to 'customer_id') to ensure compatibility with SQL and R.
+ - tenure, monthly_charges, total_charges column standardise to numeric format.   
 #### 2. **Handling Missing Values**
-   - Using Conditional Formatting in Microsoft Excel to highlight missing values. no missing values found especially in the primary key customer_id
+   - Checked for missing values using conditional formatting. No missing values found especially in the primary key customer_id
 #### 3. **Remove Duplicates in the primary id column, customer_id**
    - No duplicate fund in the primary id column.
