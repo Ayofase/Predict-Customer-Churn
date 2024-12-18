@@ -30,12 +30,7 @@ Data cleaning process with the use of Excel to critical ensure good data quality
 
 After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
 
-**1. Database and Table Creation:**
-
-* Created a dedicated database named `telecom_data` in SQL Server.
-* Created a table named `telco_customer_churn_data` within the database to store the cleaned dataset.
-
-**2. Data Quality Checks:**
+**1. Data Quality Checks:**
 
 * **Row Count Verification:** Confirmed that the imported table contained the expected number of rows (7043), matching the cleaned Excel dataset.  This ensures no data loss during import.
 
