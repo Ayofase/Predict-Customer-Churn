@@ -46,11 +46,11 @@ After initial cleaning in Excel, further data quality checks and preparation wer
     ```sql
     SELECT customer_id,
   COUNT (customer_id)  AS duplicates
-FROM                                                                              
-  telco_customer_churn_data 
-GROUP BY customer_id 
-HAVING 
- COUNT (customer_id)> 1;
+    FROM                                                                              
+  telco_customer_churn_data
+    GROUP BY customer_id
+    HAVING
+    COUNT (customer_id)> 1;
     ```
 * **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
     ```sql
