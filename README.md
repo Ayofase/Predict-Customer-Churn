@@ -36,7 +36,9 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 
 * **Column Count Verification:**  Validated the column count (21) to ensure all columns were imported correctly.
     ```sql
-    SELECT COUNT(*) AS column_count FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = 'telco_customer_churn_data';
+    SELECT COUNT(*) AS column_count
+    FROM INFORMATION_SCHEMA.COLUMNS
+    WHERE table_name = 'telco_customer_churn_data';
     ```
 
 * **Data Type Validation:** Checked data types of all columns to ensure they matched the expected types from the cleaned Excel dataset, preventing potential type-related issues during analysis(e.g.,  `customer_id` (NVARCHAR), `tenure` (TINYINT)).
@@ -44,15 +46,13 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 * **Primary Key (customerID) Null Check:**  Confirmed the absence of NULL values in the `customer_id` column, ensuring the integrity of the primary key.
 * **Duplicate Check:** Verified the absence of duplicate `customerID` values, further ensuring data integrity.
     ```sql
-    SELECT customer_id,
-  COUNT (customer_id)  AS duplicates
-    FROM                                                                              
-  telco_customer_churn_data
+    SELECT customer_id, COUNT (customer_id)  AS duplicates
+    FROM telco_customer_churn_data
     GROUP BY customer_id
-    HAVING
-    COUNT (customer_id)> 1;
+    HAVING COUNT (customer_id)> 1;
     ```
 * **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
     ```sql
-    SELECT DISTINCT churn FROM telco_customer_churn_data;
+    SELECT DISTINCT churn
+    FROM telco_customer_churn_data;
     ```
