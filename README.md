@@ -27,7 +27,7 @@ Data cleaning process with the use of Excel to critical ensure good data quality
 #### 3. **Remove Duplicates in the primary id column, customer_id**
    - No duplicate fund in the primary id column.
    
-## Data quality checks and Data Manipulation
+## Data Quality Checks and Data Manipulation
 After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
 
 **1. Data Quality Checks:**
@@ -44,7 +44,7 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 * **Data Type Validation:** Checked data types of all columns to ensure they matched the expected types from the cleaned Excel dataset, preventing potential type-related issues during analysis(e.g.,  `customer_id` (NVARCHAR), `tenure` (TINYINT)).
 
 * **Primary Key (customerID) Null Check:**  Confirmed the absence of NULL values in the `customer_id` column, ensuring the integrity of the primary key.
-* **Duplicate Check:** Verified the absence of duplicate `customerID` values, further ensuring data integrity.
+* **Duplicate Check:** Verified the absence of duplicate `customer_id` values, further ensuring data integrity.
     ```sql
     SELECT customer_id, COUNT (customer_id)  AS duplicates
     FROM telco_customer_churn_data
@@ -55,9 +55,11 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 
 **2. Data Manipulation and Analysis:**
 After data quality checks, SQL queries were used to gain insights into customer churn, focusing on streaming service subscribers.
+
 **Key Customer Metrics:**
   * Calculated counts of total customers, churned customers, non-churned customers, and streaming service subscribers.
   * Determined average monthly charges for streaming subscribers.
+
 **Churn Rate Analysis:**
   * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
   * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
