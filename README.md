@@ -20,7 +20,7 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 ## Data Cleaning and Exploration
 Data cleaning process with the use of Excel to critical ensure good data quality and consistency before analysis. Below are the steps used for cleaning and preparing the dataset
 #### 1. **Standardize Data Types**
- - Renamed columns from CamelCase to snake_case (e.g., 'CustomerID' to 'customer_id') to ensure compatibility with SQL and R.
+ - Renamed columns from CamelCase to snake_case (e.g., `CustomerID` to `customer_id`) to ensure compatibility with SQL and R.
  - tenure, monthly_charges, total_charges column standardise to numeric format.   
 #### 2. **Handling Missing Values**
    - Checked for missing values using conditional formatting. No missing values found especially in the primary key customer_id
@@ -44,7 +44,13 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 * **Primary Key (customerID) Null Check:**  Confirmed the absence of NULL values in the `customer_id` column, ensuring the integrity of the primary key.
 * **Duplicate Check:** Verified the absence of duplicate `customerID` values, further ensuring data integrity.
     ```sql
-    SELECT customer_id, COUNT(customer_id) AS duplicates FROM telco_customer_churn_data GROUP BY customer_id HAVING COUNT(customer_id) > 1;
+    SELECT customer_id,
+  COUNT (customer_id)  AS duplicates                                 
+FROM                                                                              
+  telco_customer_churn_data 
+GROUP BY customer_id 
+HAVING 
+ COUNT (customer_id)> 1;
     ```
 * **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
     ```sql
