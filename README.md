@@ -45,7 +45,7 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 * **Duplicate Check:** Verified the absence of duplicate `customerID` values, further ensuring data integrity.
     ```sql
     SELECT customer_id,
-  COUNT (customer_id)  AS duplicates                                 
+  COUNT (customer_id)  AS duplicates
 FROM                                                                              
   telco_customer_churn_data 
 GROUP BY customer_id 
