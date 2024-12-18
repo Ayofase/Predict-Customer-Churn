@@ -57,12 +57,12 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 After data quality checks, SQL queries were used to gain insights into customer churn, focusing on streaming service subscribers.
 
 **Key Customer Metrics:**
-  * Calculated counts of total customers, churned customers, non-churned customers, and streaming service subscribers.
-  * Determined average monthly charges for streaming subscribers.
+   * Calculated counts of total customers, churned customers, non-churned customers, and streaming service subscribers.
+   * Determined average monthly charges for streaming subscribers.
 
 **Churn Rate Analysis:**
-  * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
-  * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
+   * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
+   * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
     ```sql
     SELECT (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END) AS has_both_services,COUNT(*) AS total_customers,
      SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
@@ -71,5 +71,5 @@ After data quality checks, SQL queries were used to gain insights into customer 
     GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
     ```
 **Tenure and Churn for Streaming Subscribers:**
-  * Calculated the average tenure for churned vs. non-churned streaming subscribers to understand tenure's impact on churn within this customer segment.
+   * Calculated the average tenure for churned vs. non-churned streaming subscribers to understand tenure's impact on churn within this customer segment.
    
