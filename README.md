@@ -26,8 +26,8 @@ Data cleaning process with the use of Excel to critical ensure good data quality
    - Checked for missing values using conditional formatting. No missing values found especially in the primary key customer_id
 #### 3. **Remove Duplicates in the primary id column, customer_id**
    - No duplicate fund in the primary id column.
+   
 ## Data quality checks and Data Manipulation
-
 After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
 
 **1. Data Quality Checks:**
@@ -52,7 +52,22 @@ After initial cleaning in Excel, further data quality checks and preparation wer
     HAVING COUNT (customer_id)> 1;
     ```
 * **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
+
+**2. Data Manipulation and Analysis:**
+After data quality checks, SQL queries were used to gain insights into customer churn, focusing on streaming service subscribers.
+**Key Customer Metrics:**
+  * Calculated counts of total customers, churned customers, non-churned customers, and streaming service subscribers.
+  * Determined average monthly charges for streaming subscribers.
+**Churn Rate Analysis:**
+  * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
+  * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
     ```sql
-    SELECT DISTINCT churn
-    FROM telco_customer_churn_data;
+    SELECT (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END) AS has_both_services,COUNT(*) AS total_customers,
+     SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
+      CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS churn_rate
+    FROM telco_customer_churn_data
+    GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
     ```
+**Tenure and Churn for Streaming Subscribers:**
+  * Calculated the average tenure for churned vs. non-churned streaming subscribers to understand tenure's impact on churn within this customer segment.
+   
