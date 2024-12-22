@@ -35,7 +35,8 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 * **Row Count Verification:** Confirmed that the imported table contained the expected number of rows (7043), matching the cleaned Excel dataset.  This ensures no data loss during import.
 
 * **Column Count Verification:**  Validated the column count (21) to ensure all columns were imported correctly.
-    ```sql
+
+   ```sql
     SELECT COUNT(*) AS column_count
     FROM INFORMATION_SCHEMA.COLUMNS
     WHERE table_name = 'telco_customer_churn_data';
@@ -45,12 +46,14 @@ After initial cleaning in Excel, further data quality checks and preparation wer
 
 * **Primary Key (customerID) Null Check:**  Confirmed the absence of NULL values in the `customer_id` column, ensuring the integrity of the primary key.
 * **Duplicate Check:** Verified the absence of duplicate `customer_id` values, further ensuring data integrity.
-    ```sql
+
+   ```sql
     SELECT customer_id, COUNT (customer_id)  AS duplicates
     FROM telco_customer_churn_data
     GROUP BY customer_id
     HAVING COUNT (customer_id)> 1;
     ```
+
 * **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
 
 **2. Data Manipulation and Analysis:**
@@ -63,13 +66,15 @@ After data quality checks, SQL queries were used to gain insights into customer 
 **Churn Rate Analysis:**
    * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
    * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
-    ```sql
+
+```sql
     SELECT (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END) AS has_both_services,COUNT(*) AS total_customers,
      SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
       CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS churn_rate
     FROM telco_customer_churn_data
     GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
     ```
+
 **Tenure and Churn for Streaming Subscribers:**
    * Calculated the average tenure for churned vs. non-churned streaming subscribers to understand tenure's impact on churn within this customer segment.
    
