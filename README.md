@@ -1,5 +1,6 @@
 # Analyzing Customer Churn in a Telecom Company: Insights with a Focus on Streaming Service Subscribers
 
+
 ### Project Goal
 Analyze customer behavior and service usage to understand churn drivers and develop data-driven recommendations for improving customer retention, with a focus on streaming service subscribers.
 
@@ -13,46 +14,41 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 * **R:**  In-depth exploratory data analysis, and visualization.
 * **Tableau:** Interactive dashboard creation.
 
-## Data Cleaning and Exploration
-Data cleaning process with the use of Excel to critical ensure good data quality and consistency before analysis. Below are the steps used for cleaning and preparing the dataset
-#### 1. **Standardize Data Types**
- - Renamed columns from CamelCase to snake_case (e.g., `CustomerID` to `customer_id`) to ensure compatibility with SQL and R.
- - tenure, monthly_charges, total_charges column standardise to numeric format.   
-#### 2. **Handling Missing Values**
-   - Checked for missing values using conditional formatting. No missing values found especially in the primary key customer_id
-#### 3. **Remove Duplicates in the primary id column, customer_id**
-   - No duplicate fund in the primary id column.
-   
-## Data Quality Checks and Data Manipulation
-After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
+## Data Cleaning and Preparion
+Initial data cleaning was performed in Excel:
+1. **Data Type Standardization:** Column names were converted from CamelCase to snake_case for consistency with SQL and R.  The `total_charges`, `monthly_charges`, and `tenure` columns were converted to numeric data types.
+2. **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
+3. **Duplicate Removal:** No duplicate `customer_id` values were found since its the primary key.
 
-**1. Data Quality Checks:**
+The cleaned data was then imported into SQL Server, where additional data quality checks and validation were performed:
+* **Data Quality Checks in SQL:**
 
-* **Row Count Verification:** Confirmed that the imported table contained the expected number of rows (7043), matching the cleaned Excel dataset.  This ensures no data loss during import.
+1 **Row Count:** Verified row count consistency with the cleaned Excel data.
 
-* **Column Count Verification:**  Validated the column count (21) to ensure all columns were imported correctly.
+2 **Column Count:** Validated the expected number of columns.
 
    ```sql
     SELECT COUNT(*) AS column_count
     FROM INFORMATION_SCHEMA.COLUMNS
     WHERE table_name = 'telco_customer_churn_data';
-    ```
+   ```
 
-* **Data Type Validation:** Checked data types of all columns to ensure they matched the expected types from the cleaned Excel dataset, preventing potential type-related issues during analysis(e.g.,  `customer_id` (NVARCHAR), `tenure` (TINYINT)).
+3 **Data Types:** Checked data types for consistency.
 
-* **Primary Key (customerID) Null Check:**  Confirmed the absence of NULL values in the `customer_id` column, ensuring the integrity of the primary key.
-* **Duplicate Check:** Verified the absence of duplicate `customer_id` values, further ensuring data integrity.
+4 **Primary Key (customer_id) Null Check:** Confirmed no NULLs in `customer_id`.
+
+5 **Duplicate Check:**  Confirmed no duplicate `customer_id` values.
 
    ```sql
     SELECT customer_id, COUNT (customer_id)  AS duplicates
     FROM telco_customer_churn_data
     GROUP BY customer_id
     HAVING COUNT (customer_id)> 1;
-    ```
+   ```
+* **Churn Column Validation:**  Checked distinct values present in the `churn` column.
 
-* **Churn Column Validation:** Checked for Invalid values in the Churn column to ensure only distinct values of 'Yes' and 'No' where present in the churn column.
-
-**2. Data Manipulation and Analysis:**
+## Exploratory Data Analysis (EDA)
+After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
 After data quality checks, SQL queries were used to gain insights into customer churn, focusing on streaming service subscribers.
 
 **Key Customer Metrics:**
@@ -63,10 +59,11 @@ After data quality checks, SQL queries were used to gain insights into customer 
    * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
    * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
 
-```sql
+   ```sql
     SELECT (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END) AS has_both_services,COUNT(*) AS total_customers,
      SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
       CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS churn_rate
     FROM telco_customer_churn_data
     GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
-    ```
+   ```
+    
