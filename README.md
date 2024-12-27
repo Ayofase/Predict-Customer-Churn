@@ -74,7 +74,3 @@ After data quality checks, SQL queries were used to gain insights into customer 
     FROM telco_customer_churn_data
     GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
     ```
-
-**Tenure and Churn for Streaming Subscribers:**
-   * Calculated the average tenure for churned vs. non-churned streaming subscribers to understand tenure's impact on churn within this customer segment.
-   
