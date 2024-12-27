@@ -4,18 +4,14 @@
 Analyze customer behavior and service usage to understand churn drivers and develop data-driven recommendations for improving customer retention, with a focus on streaming service subscribers.
 
 ### Data source
-This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download), contains detailed information about:
- - Customers who left within the last month – the column is called Churn
- - Services that each customer has signed up for – phone, multiple lines, internet, online security, online backup, device protection, tech support, and streaming TV and movies
- - Customer account information – Tenure (how long they’ve been a customer), contract, payment method, paperless billing, monthly charges, and total charges
- - Demographic info about customers – gender, age range, and if they have partners and dependents.
- - The raw data contains 7043 rows (customers) and 21 columns (features).
+This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download), The dataset contains information on customer demographics, services subscribed (including streaming TV and movies), account information (tenure, contract type, payment method, etc.), and churn status.  The raw data contains 7043 rows and 21 columns.
 
 ### Tools
- - Excel - Data Cleaning
- - SQL Server
- - R 
- - Tableau
+
+* **Excel:** Data cleaning and preparation.
+* **SQL Server:** Data validation and exploratory data analysis.
+* **R:**  In-depth exploratory data analysis, and visualization.
+* **Tableau:** Interactive dashboard creation.
 
 ## Data Cleaning and Exploration
 Data cleaning process with the use of Excel to critical ensure good data quality and consistency before analysis. Below are the steps used for cleaning and preparing the dataset
