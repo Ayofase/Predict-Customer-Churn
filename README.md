@@ -48,22 +48,38 @@ The cleaned data was then imported into SQL Server, where additional data qualit
 * **Churn Column Validation:**  Checked distinct values present in the `churn` column.
 
 ## Exploratory Data Analysis (EDA)
-After initial cleaning in Excel, further data quality checks and preparation were performed in SQL Server to ensure data integrity and consistency before analysis.
-After data quality checks, SQL queries were used to gain insights into customer churn, focusing on streaming service subscribers.
+The following SQL queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R.
 
-**Key Customer Metrics:**
-   * Calculated counts of total customers, churned customers, non-churned customers, and streaming service subscribers.
-   * Determined average monthly charges for streaming subscribers.
+**Overall Churn Analysis:**
 
+* **Overall Churn Rate:** 26.54% of total customers churned. This serves as a baseline for comparison with specific customer segments.
+    ```sql
+    SELECT COUNT(*) AS total_customers,                                                                            
+       SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS total_churned,                                        
+       CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS overall_churn_rate,  
+       SUM(CASE WHEN churn = 'No' THEN 1 ELSE 0 END) AS total_non_churned                                      
+    FROM telco_customer_churn_data;
+
+    ```
+* **Key Customer Metrics:**
+    * **Total Customers:** 7043
+    * **Churned Customers:** 1869
+    * **Non-Churned Customers:** 5174
+    * **Streaming Service Subscribers:** 3499
+    * **Average Monthly Charges for Streaming Subscribers:** $86.03 
+    * **Average Total Charges for Streaming Subscribers:** $3486.83 
 **Churn Rate Analysis:**
-   * Calculated churn rates by streaming service (StreamingTV, StreamingMovies), contract type, and internet service type to identify potential churn drivers.
-   * Calculated churn rate for customer subscribing to both streaming_movies and streaming_tv.
 
-   ```sql
-    SELECT (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END) AS has_both_services,COUNT(*) AS total_customers,
-     SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS churned_customers,
-      CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS churn_rate
-    FROM telco_customer_churn_data
-    GROUP BY (CASE WHEN streaming_tv = 'Yes' and streaming_movies= 'Yes' THEN 'Yes' else 'No' END);
+
+* **Churn Rate by Streaming Service:** Customers subscribing to streaming TV had a churn rate of 30.07%, while those subscribing to streaming movies had a churn rate of 29.94%. These are very close to the overall churn rate (26.54%), suggesting that subscribing to streaming services *alone* might not be a significant driver of churn. *(Show one query as an example.)*
+
+* **Churn Rate by Contract Type for Streaming Subscribers:** Combining contract type and streaming service usage reveals that month-to-month contracts have higher churn rates, but the addition of streaming services does not increase the churn rate as it remains similar. This suggests that the primary driver here is the length of contract agreement and not the presence of streaming services. *Provide insights gotten after running your query. This will show the recruiter you can interpret data* *(Show one query as an example.)*
+
+* **Churn Rate by Internet Service Type:**  Fiber optic customers experienced the highest churn rate (41.89%), which is significantly higher than DSL (18.96%) and No internet service (7.40%). Since streaming relies heavily on internet quality, this finding could suggest that fiber optic customers, despite having the fastest internet, might have other issues (e.g., higher prices, technical problems) causing them to churn. *(Show the query)*.
+
+* **Churn Rate for Customers with Both Streaming Movies and TV:** The churn rate for customers subscribing to *both* streaming services was 29.28%, slightly *lower* than the individual streaming service churn rates and very close to the overall churn rate. This is somewhat counterintuitive and could suggest that customers who are more invested in streaming services, by using both movie and TV streaming, which implies they are more satisfied with the services and are therefore less likely to churn. *(Show the query.)*
+
+
+* **Average Tenure for Churned vs. Non-Churned Streaming Subscribers:** Churned streaming subscribers had an average tenure of 23.1 months, while non-churned streaming subscribers had a much longer average tenure of 38.7 months.  This reinforces the idea that longer tenure is associated with lower churn, even within the streaming subscriber segment. *(Show the query.)*
    ```
     
