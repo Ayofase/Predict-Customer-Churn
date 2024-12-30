@@ -115,5 +115,5 @@ The following SQL queries were performed to gain initial insights into customer 
 
 
 * **Average Tenure for Churned vs. Non-Churned Streaming Subscribers:** Churned streaming subscribers had an average tenure of 23 months, while non-churned streaming subscribers had a much longer average tenure of 45 months.  This reinforces the idea that longer tenure is associated with lower churn, even within the streaming subscriber segment.
-   ```
+   
     
