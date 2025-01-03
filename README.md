@@ -1,5 +1,9 @@
 # Analyzing Customer Churn in a Telecom Company: Insights with a Focus on Streaming Service Subscribers
 
+## Project Overview
+
+This project analyzes customer churn in a telecom company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R and an interactive dashboard using Tableau.  A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, warranting further investigation. 
+
 
 ### Project Goal
 Analyze customer behavior and service usage to understand churn drivers and develop data-driven recommendations for improving customer retention, with a focus on streaming service subscribers.
@@ -23,28 +27,14 @@ Initial data cleaning was performed in Excel:
 The cleaned data was then imported into SQL Server, where additional data quality checks and validation were performed:
 * **Data Quality Checks in SQL:**
 
-1 **Row Count:** Verified row count consistency with the cleaned Excel data.
+1 **Row and Column Count:** Verified row and column counts against the cleaned Excel data.
 
-2 **Column Count:** Validated the expected number of columns.
-
-   ```sql
-    SELECT COUNT(*) AS column_count
-    FROM INFORMATION_SCHEMA.COLUMNS
-    WHERE table_name = 'telco_customer_churn_data';
-   ```
-
-3 **Data Types:** Checked data types for consistency.
+2 **Data Types:** Checked data types for consistency.
 
 4 **Primary Key (customer_id) Null Check:** Confirmed no NULLs in `customer_id`.
 
 5 **Duplicate Check:**  Confirmed no duplicate `customer_id` values.
 
-   ```sql
-    SELECT customer_id, COUNT (customer_id)  AS duplicates
-    FROM telco_customer_churn_data
-    GROUP BY customer_id
-    HAVING COUNT (customer_id)> 1;
-   ```
 * **Churn Column Validation:**  Checked distinct values present in the `churn` column.
 
 ## Exploratory Data Analysis (EDA)
@@ -116,4 +106,25 @@ The following SQL queries were performed to gain initial insights into customer 
 
 * **Average Tenure for Churned vs. Non-Churned Streaming Subscribers:** Churned streaming subscribers had an average tenure of 23 months, while non-churned streaming subscribers had a much longer average tenure of 45 months.  This reinforces the idea that longer tenure is associated with lower churn, even within the streaming subscriber segment.
    
-    
+## Data Analysis in R
+
+This section presents key visualizations and deeper explorations performed in R, building upon the initial insights gained from the SQL EDA.  The full, well-commented R script is available on GitHub: [Link to your R script].
+
+**(Start with your key visualizations here, each followed by a concise interpretation.  Prioritize visualizations that compare streaming subscribers to other customer segments.)*
+
+*For example:*
+
+* **Churn Rate by Tenure:** [churn_rate_by_tenure.png] Churn rate generally decreases with longer tenure, highlighting the importance of customer retention strategies. *You can show tenure distribution using a histogram for both churned and non-churned customers in a combined plot. This adds aesthetic to your analysis and recruiters love seeing these too.* *Use the grid.arrange function from the gridExtra package.* *Document this and add your interpretations.* This answers one of the EDA questions and gives further insight into churn behaviour.
+
+* **Churn Rate and Average Charges by Streaming Service Subscription:** [Link to a visualization comparing churn rates and average charges for streamers vs. non-streamers].  Streaming subscribers have a slightly higher churn rate (30.01%) compared to the overall churn rate (26.54%), and also have higher average monthly (\$73.02 vs \$[Value]) and total charges (\$2501.73 vs \$[Value]). *Show the r-code and the result in your README.* *This comparison provides further insight to answer another EDA question - How much do streaming service subscribers pay on average each month and total?* This is highly relevant. Targetting these customers with higher charges with exceptional services would be necessary to retain these valuable customer segment. *Interpreting the findings and connecting them with business decision is a very valuable skill to showcase to recruiters.*
+
+* **Churn Rate by Internet Service Type (Streaming Subscribers):** [Link to visualization]. *Interpret this visualisation. State the values calculated and compare them.*  As discussed in the SQL analysis, Fiber optic customers have a significantly higher churn rate, which warrants further investigation.
+
+* **Churn Rate by Contract Type (Streaming Subscribers):** [Link to visualization]. *Focus on what contract type has higher churn and suggest how the company can increase customer retention based on this insight.*
+
+
+* **Average Tenure for Churned vs. Non-Churned Streaming Subscribers:** [Link to visualization]. *Interpret the result and provide insight based on the result. State the average tenure values for both groups.* This is crucial for the business to evaluate customer behaviour and predict potential churn, informing retention strategies.
+
+
+*(Optional Statistical Tests): If you perform any statistical tests, briefly mention them and their results here, further validating your findings.*
+Use code with caution.    
