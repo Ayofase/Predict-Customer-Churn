@@ -1,9 +1,19 @@
-# Analyzing Customer Churn in a Telecom Company: Insights with a Focus on Streaming Service Subscribers
+# Reducing Churn: A Comparative Analysis of Streaming and Non-Streaming Subscribers
 
 ## Project Overview
 
-This project analyzes customer churn in a telecom company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R and an interactive dashboard using Tableau.  A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, warranting further investigation. 
+This project analyzes customer churn in a telecommunication company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R and an interactive dashboard using Tableau. A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, warranting further investigation. 
 
+## Table Of Content
+  - [Project Goals](#project-goals)
+  - [Data source](#data-source)
+  - [Tools](#tools)
+  - [Data Cleaning](#data-cleaning)
+  - [Exploratory Data Analysis](#exploratory_data_analysis)
+  - [Data Analysis and Visualisation](#data_analysis_and_visualisation)
+  - [Results](#results)
+  - [Recommendation](#recommendation)
+  - [Limitations](#limitations)
 
 ### Project Goal
 Analyze customer behavior and service usage to understand churn drivers and develop data-driven recommendations for improving customer retention, with a focus on streaming service subscribers.
@@ -40,18 +50,11 @@ The cleaned data was then imported into SQL Server, where additional data qualit
 ## Exploratory Data Analysis (EDA)
 The following SQL queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R
 
-**Overall Churn Analysis (Questions we are trying to answer):**
+**Overall Churn Analysis:**
 
 * What is the overall churn rate for the telecom company?
 * How many customers are there in total, how many have churned, and how many have not churned?
-   ```sql
-    SELECT COUNT(*) AS total_customers,                                                                            
-       SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS total_churned,                                        
-       CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS overall_churn_rate,  
-       SUM(CASE WHEN churn = 'No' THEN 1 ELSE 0 END) AS total_non_churned                                      
-    FROM telco_customer_churn_data;
-
-    ```
+   
 * What is the distribution of customers across different contract types?
 * How much do streaming service subscribers pay on average each month?
 * How much do streaming service subscribers pay on average in total?
@@ -64,7 +67,7 @@ The following SQL queries were performed to gain initial insights into customer 
  ```
 * What is the average tenure of a customer?
 
-**Streaming Service Subscriber Analysis (Questions we are trying to answer):**
+**Streaming Service Subscriber Analysis:**
 
 * How many customers subscribe to at least one streaming service?
 * What are the churn rates for customers with Streaming TV, Streaming Movies, both streaming services and those without streaming services?  Do these churn rates differ significantly from the overall churn rate?
@@ -91,8 +94,19 @@ The following SQL queries were performed to gain initial insights into customer 
     * **Non-Churned Customers:** 5174
     * **Streaming Service Subscribers:** 3499
     * **Average Monthly Charges for Streaming Subscribers:** $86.03 
-    * **Average Total Charges for Streaming Subscribers:** $3486.83 
+    * **Average Total Charges for Streaming Subscribers:** $3486.83
+      
+     ```sql
+    SELECT COUNT(*) AS total_customers,                                                                            
+       SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS total_churned,                                        
+       CAST(SUM(CASE WHEN churn = 'Yes' THEN 1 ELSE 0 END) AS FLOAT) * 100 / COUNT(*) AS overall_churn_rate,  
+       SUM(CASE WHEN churn = 'No' THEN 1 ELSE 0 END) AS total_non_churned                                      
+    FROM telco_customer_churn_data;
 
+     ```
+
+
+**Contract Type Distribution:** Majority of the customers(3875) are on month-to-month contract, indicating customers preference for short time contract. A small porti
 **Churn Rate Analysis:**
 
 * **Churn Rate by Streaming Service:** Customers subscribing to streaming TV had a churn rate of 30.07%, while those subscribing to streaming movies had a churn rate of 29.94%. These are very close to the overall churn rate (26.54%), suggesting that subscribing to streaming services *alone* might not be a significant driver of churn. 
