@@ -8,9 +8,9 @@ This project analyzes customer churn in a telecommunication company using the Te
   - [Project Goals](#project-goals)
   - [Data source](#data-source)
   - [Tools](#tools)
-  - [Data Cleaning](#data-cleaning)
-  - [Exploratory Data Analysis](#exploratory_data_analysis)
-  - [Data Analysis and Visualisation](#data_analysis_and_visualisation)
+  - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
+  - [Exploratory Data Analysis](#exploratory-data-analysis)
+  - [Data Analysis and Visualisation](#data-analysis-and-visualisation)
   - [Results](#results)
   - [Recommendation](#recommendation)
   - [Limitations](#limitations)
@@ -20,7 +20,9 @@ This project analyzes customer churn in a telecommunication company using the Te
 The primary goal of this project is to analyze customer behavior and service usage patterns to understand the key drivers of churn.  The analysis will focus on identifying specific areas for improvement in customer retention, particularly among subscribers to streaming services. This will involve developing data-driven recommendations such as targeted promotions, optimized pricing strategies, or improvements to service quality.
 
 ### Data source
-This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download), This dataset contains information on approximately 7,043 customers and includes demographics, subscribed services (including streaming TV and movies), account information (tenure, contract type, payment method, etc.), and churn status.  **Crucially, the dataset also includes information on the type of internet service each customer uses (DSL, Fiber optic, etc.), which is a key factor in analyzing churn among streaming service subscribers.**
+
+This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download), This dataset contains information on approximately 7,043 customers and includes demographics, subscribed services (including streaming TV and movies), account information (tenure, contract type, payment method, etc.), and churn status.  the dataset also includes information on the type of internet service each customer uses (DSL, Fiber optic, etc.), which is a key factor in analyzing churn among streaming service subscribers.
+
 ### Tools
 
 * **Excel:** Data cleaning and preparation.
@@ -28,8 +30,10 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 * **R:**  In-depth exploratory data analysis, and visualization.
 * **Tableau:** Interactive dashboard creation.
 
-## Data Cleaning and Preparion
+## Data Cleaning and Preparation
+
 Initial data cleaning was performed in Excel:
+
 1. **Data Type Standardization:** Column names were converted from CamelCase to snake_case for consistency with SQL and R.  The `total_charges`, `monthly_charges`, and `tenure` columns were converted to numeric data to enable mathematical operations and statistical analysis."types.
 2. **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
 3. **Duplicate Removal:** The dataset was checked for duplicate customer_id values to ensure data integrity. No duplicates were found.
@@ -116,3 +120,34 @@ This analysis reveals a complex relationship between internet service type, stre
 ![average_tenure_streaming_subscribers](https://github.com/user-attachments/assets/fb9003e2-b057-4305-b178-a25a2731b6ca)
 
 Churned streaming subscribers have a significantly shorter average tenure (23.9 months) compared to non-churned subscribers (45.7 months). This reinforces the importance of focusing retention efforts on newer streaming customers.  Strategies to improve early engagement and satisfaction with streaming services are crucial for reducing churn within this segment. The significant difference in average tenure emphasizes the need to identify specific pain points or areas of dissatisfaction that lead to early churn among streaming subscribers. This might include proactively addressing technical issues, offering personalized onboarding experiences, or providing incentives for continued service usage during the initial months of subscription. Proactive measures during this critical early stage can foster long-term customer loyalty.
+
+## Interactive Dashboard
+An interactive dashboard was created using Tableau to provide visually compelling exploration of the key findings related to customer churn.
+
+## Recommendations
+This analysis reveals key opportunities to reduce customer churn and boost revenue, particularly within the valuable streaming subscriber segment:
+
+**Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate (41.89%) signals a critical area for improvement.
+
+* **Competitive Pricing & Value:** A competitive pricing analysis is recommended to ensure fiber optic offerings align with market rates and perceived customer value. This could involve tiered pricing models or bundled packages. Target: Reduce fiber optic churn by 15% within the next quarter.
+
+* **Proactive Support & Reliability:** Proactive network monitoring and a dedicated, specialized fiber optic support team are recommended to address technical issues promptly and improve service reliability. Target: Increase fiber optic customer satisfaction (measured by CSAT surveys) by 20%.
+
+**Increase Streaming Subscriber Engagement & Retention:**
+
+* **Personalized Recommendations:** Implementing a personalized content recommendation system for streaming subscribers can enhance engagement and perceived value. Target: Increase average streaming service usage per subscriber by 10%.
+
+* **Targeted Retention Offers:** Targeted retention campaigns for at-risk streaming subscribers (e.g., month-to-month contracts, short tenure) with personalized incentives can improve loyalty.
+  -Target: Reduce churn among this at-risk group by 25%.
+
+**Optimize the New Streaming Subscriber Experience:**
+
+* **Streamlined Onboarding:** A streamlined and engaging onboarding process with personalized tutorials and proactive support can significantly improve the initial streaming experience.
+    -Target: Increase new subscriber satisfaction with the onboarding process by 15%.
+
+* **Incentivize Early Usage:** Time-limited incentives like discounted rates or premium content access during the first few months can encourage continued streaming service usage and habit formation.
+    -Target: Increase new streaming subscriber retention by 10% within the first six months.
+
+**Understand Non-Streamer Churn Drivers:** Analyzing non-streamer churn is crucial.
+
+* **Customer Feedback Collection:** Surveys and focus groups can identify the reasons for non-streamer churn, enabling targeted interventions to address their specific needs and concerns. Target: Identify the top three drivers of non-streamer churn and implement targeted mitigation strategies.
