@@ -146,7 +146,7 @@ An interactive dashboard was created using [Tableau](https://public.tableau.com/
 ## Recommendations
 This analysis reveals key opportunities to reduce customer churn and boost revenue, particularly within the valuable streaming subscriber segment:
 
-1. **Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate (41.89%) signals a critical area for improvement.
+1. **Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate signals a critical area for improvement.
 
    * **Competitive Pricing & Value:** A competitive pricing analysis is recommended to ensure fiber optic offerings align with market rates and perceived customer value. This could involve tiered pricing models or bundled packages. Target: Reduce fiber optic churn by 15% within the next quarter.
 
