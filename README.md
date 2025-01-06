@@ -38,7 +38,7 @@ Initial data cleaning was performed in Excel:
 2. **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
 3. **Duplicate Removal:** The dataset was checked for duplicate customer_id values to ensure data integrity. No duplicates were found.
 
-The cleaned data was then imported into SQL Server, where additional data quality checks and validation were performed:
+The cleaned data] was then imported into SQL Server, where additional data quality checks and validation were performed:
 * **Data Quality Checks in SQL:** Data integrity was verified in SQL Server by checking row and column counts against the cleaned Excel data, confirming consistent data types, and ensuring the customer_id primary key contained no NULL values or duplicates. These checks are essential for maintaining data accuracy and reliability throughout the analysis.
 
 * **Churn Column Validation:**  The churn column, the target variable for this analysis, was validated by checking its distinct values, which were confirmed to be 'Yes' and 'No'.
@@ -49,15 +49,15 @@ The following SQL queries were performed to gain initial insights into customer 
 **Overall Churn rate:**
 
 **Question:** What is the overall churn rate for the telecom company and what are the key customer metrics?
- **Overall Churn Rate:** 26.54% of total customers churned. This serves as a baseline for comparison with specific customer segments.
+ * **Overall Churn Rate:** 26.54% of total customers churned. This serves as a baseline for comparison with specific customer segments.
    
    **Key Customer Metrics:**
-     **Total Customers:** 7043
-     **Churned Customers:** 1869
-     **Non-Churned Customers:** 5174
-     **Streaming Service Subscribers:** 3499
-     **Average Monthly Charges:** $64.76
-     **Average Total Charges:** $2283.30
+     * **Total Customers:** 7043
+     * **Churned Customers:** 1869
+     * **Non-Churned Customers:** 5174
+     * **Streaming Service Subscribers:** 3499
+     * **Average Monthly Charges:** $64.76
+     * **Average Total Charges:** $2283.30
       
      ```sql
     SELECT COUNT(*) AS total_customers,                                                                            
@@ -71,21 +71,21 @@ The following SQL queries were performed to gain initial insights into customer 
 **Churn Rate Analysis:**
 **Question:** How does contract type and  internet service influence churn?
   
-   **Churn Rate by Contract Type:** Contract type has a significant impact on churn.  Customers with month-to-month contracts customer(3875) have a dramatically higher churn rate (42.71%) compared to those with one-year (11.27%) or two-year (2.83%) contracts with customers of 1473 and 1675 respectively. This suggests that longer-term contracts are highly effective in retaining customers.  Further analysis will explore whether this relationship holds true for streaming subscribers as well.
+   * **Churn Rate by Contract Type:** Contract type has a significant impact on churn.  Customers with month-to-month contracts customer(3875) have a dramatically higher churn rate (42.71%) compared to those with one-year (11.27%) or two-year (2.83%) contracts with customers of 1473 and 1675 respectively. This suggests that longer-term contracts are highly effective in retaining customers.  Further analysis will explore whether this relationship holds true for streaming subscribers as well.
 
-   **Churn Rate by Internet Service Type:**  Internet service type significantly influences churn rate.  Fiber optic customers experience the highest churn (41.89%), despite fiber optic internet generally being considered the best option for streaming due to its higher speeds. This unexpected finding suggests that factors other than internet speed are likely contributing to churn among fiber optic customers. Potential explanations include higher prices for fiber optic services, technical issues specific to fiber optic connections, or increased competition in the fiber optic market.  This warrants further investigation to identify the specific drivers of churn within the fiber optic customer segment.  It's also shows that customers with no internet service have a very low churn rate (7.40%), which is expected as they are not using the company's internet services and therefore less likely to churn from them.  DSL customers fall in between, with a churn rate of 18.96%. This reinforces the need to investigate the specific reasons for the high churn rate among fiber optic customers, as it deviates significantly from the other internet service types.
+   * **Churn Rate by Internet Service Type:**  Internet service type significantly influences churn rate.  Fiber optic customers experience the highest churn (41.89%), despite fiber optic internet generally being considered the best option for streaming due to its higher speeds. This unexpected finding suggests that factors other than internet speed are likely contributing to churn among fiber optic customers. Potential explanations include higher prices for fiber optic services, technical issues specific to fiber optic connections, or increased competition in the fiber optic market.  This warrants further investigation to identify the specific drivers of churn within the fiber optic customer segment.  It's also shows that customers with no internet service have a very low churn rate (7.40%), which is expected as they are not using the company's internet services and therefore less likely to churn from them.  DSL customers fall in between, with a churn rate of 18.96%. This reinforces the need to investigate the specific reasons for the high churn rate among fiber optic customers, as it deviates significantly from the other internet service types.
 
 **Question:** How does streaming service subscription relate to churn?
     
-   **Churn Rate by Streaming Service:** Customers subscribing to streaming TV had a churn rate of 30.07%, while those subscribing to streaming movies had a churn rate of 29.94%. These are very close to the overall churn rate (26.54%), suggesting that subscribing to streaming services alone might not be a significant driver of churn.
+   * **Churn Rate by Streaming Service:** Customers subscribing to streaming TV had a churn rate of 30.07%, while those subscribing to streaming movies had a churn rate of 29.94%. These are very close to the overall churn rate (26.54%), suggesting that subscribing to streaming services alone might not be a significant driver of churn.
 
 **Question:** Does subscribing to both streaming movie and TV services impact churn differently than subscribing to only one or no streaming services?
     
-   **Churn Rate for Customers with Either Streaming Movies or TV and Both Streaming Movies and TV:** Customers subscribing to both streaming services (29.43%) churn slightly less than those with at least one service (30.32%), but both groups churn more than customers with no streaming services (22.80%). This suggests a complex relationship between streaming service usage and churn.  While subscribing to both services might indicate higher customer satisfaction (leading to slightly lower churn), the fact that any streaming service usage is linked to higher churn than no usage warrants further investigation.  Possible explanations include issues with streaming service quality, higher costs associated with streaming, or other unmeasured factors.  Gathering qualitative data could provide additional insights into customer perceptions and motivations within these segments.
+   * **Churn Rate for Customers with Either Streaming Movies or TV and Both Streaming Movies and TV:** Customers subscribing to both streaming services (29.43%) churn slightly less than those with at least one service (30.32%), but both groups churn more than customers with no streaming services (22.80%). This suggests a complex relationship between streaming service usage and churn.  While subscribing to both services might indicate higher customer satisfaction (leading to slightly lower churn), the fact that any streaming service usage is linked to higher churn than no usage warrants further investigation.  Possible explanations include issues with streaming service quality, higher costs associated with streaming, or other unmeasured factors.  Gathering qualitative data could provide additional insights into customer perceptions and motivations within these segments.
 
 **Question:** How does customer tenure relate to churn?
 
-   **Average Tenure for Churned vs. Non-Churned:** As expected, there's a strong relationship between tenure and churn.  Churned customers have a significantly shorter average tenure (17.98 months) compared to non-churned customers (37.57 months). This confirms that longer-tenured customers are more likely to stay with the company, while newer customers are more prone to churn. This highlights the importance of focusing on customer retention strategies during the early stages of the customer lifecycle.
+   * **Average Tenure for Churned vs. Non-Churned:** As expected, there's a strong relationship between tenure and churn.  Churned customers have a significantly shorter average tenure (17.98 months) compared to non-churned customers (37.57 months). This confirms that longer-tenured customers are more likely to stay with the company, while newer customers are more prone to churn. This highlights the importance of focusing on customer retention strategies during the early stages of the customer lifecycle.
    
 ## Data Analysis and Visulaisation
 
@@ -96,9 +96,9 @@ This section presents deeper explorations performed in R, building upon the init
 **Churn Rate by Contract Type (Streaming Subscribers):**
 ![churn_rate_by_contract_streaming](https://github.com/user-attachments/assets/f7a1d63c-852b-448c-99da-57900bd2a1b6)
 
-  **Month-to-month:**  Customers with month-to-month contracts have the highest churn rates.  Streamers in this category churn at a significantly higher rate (49.4%) than non-streamers (37.0%).
-  **One year:** Churn rates are substantially lower for customers with one-year contracts. However, streamers still churn at a higher rate (17.0%) than non-streamers (4.01%).
-  **Two year:**  Customers with two-year contracts have the lowest churn rates overall. Streamers have a slightly higher churn rate (4.29%) compared to non-streamers (1.24%), but both are significantly lower than other contract types.
+  * **Month-to-month:**  Customers with month-to-month contracts have the highest churn rates.  Streamers in this category churn at a significantly higher rate (49.4%) than non-streamers (37.0%).
+  * **One year:** Churn rates are substantially lower for customers with one-year contracts. However, streamers still churn at a higher rate (17.0%) than non-streamers (4.01%).
+  * **Two year:**  Customers with two-year contracts have the lowest churn rates overall. Streamers have a slightly higher churn rate (4.29%) compared to non-streamers (1.24%), but both are significantly lower than other contract types.
 
 This analysis reveals the strong influence of contract type on churn, with month-to-month contracts being the most vulnerable to churn, especially among streaming subscribers. Encouraging customers to switch to longer-term contracts, particularly streamers who demonstrate higher churn in month-to-month but low churn in longer term contracts is a key retention strategy.  While the analysis further reveals streaming customers on one-year contracts churn significantly more than non-streamers. Incentives and special offers could be introduced to encourage streamers to upgrade to a two-year contract to benefit from the lower churn rates observed there.  Understanding the motivations of streamers who churn despite having longer contracts is crucial for developing tailored interventions. Investigating specific reasons for churning on one-year contracts among streamers would provide insights into how to improve customer loyalty for different groups.
 
@@ -113,9 +113,9 @@ This line graph displays the churn rate across different tenure lengths, compari
 
 ![churn_rate_by_internet_streaming](https://github.com/user-attachments/assets/4d470a9f-2464-4ffb-95df-fe23bd0f19ad)
 
-   **Fiber optic:**  Customers with fiber optic internet have the highest churn rates, with non-streamers churning significantly more (46.6%) than streamers (39.9%).
-   **DSL:**  DSL customers churn less than fiber optic customers, and the difference between streamers (14.2%) and non-streamers (24.5%) is more pronounced. Streamers using DSL churn significantly less.
-   **No internet service:**  As expected, customers with no internet service have the lowest churn rate (7.40%). This group consists entirely of non-streamers, as streaming requires an internet connection.
+   * **Fiber optic:**  Customers with fiber optic internet have the highest churn rates, with non-streamers churning significantly more (46.6%) than streamers (39.9%).
+   * **DSL:**  DSL customers churn less than fiber optic customers, and the difference between streamers (14.2%) and non-streamers (24.5%) is more pronounced. Streamers using DSL churn significantly less.
+   * **No internet service:**  As expected, customers with no internet service have the lowest churn rate (7.40%). This group consists entirely of non-streamers, as streaming requires an internet connection.
 
 This analysis reveals a complex relationship between internet service type, streaming status, and churn. The high churn rate for fiber optic customers, regardless of streaming status, suggests potential issues with fiber optic service quality, pricing, or competition.  The lower churn rate among DSL streamers compared to DSL non-streamers indicates that providing a good DSL experience might be an effective retention strategy for this segment. Further investigation should explore the specific reasons driving churn within each internet service and streaming status group to develop targeted retention initiatives.
 
@@ -133,28 +133,28 @@ This analysis reveals key opportunities to reduce customer churn and boost reven
 
 1. **Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate (41.89%) signals a critical area for improvement.
 
-    **Competitive Pricing & Value:** A competitive pricing analysis is recommended to ensure fiber optic offerings align with market rates and perceived customer value. This could involve tiered pricing models or bundled packages. Target: Reduce fiber optic churn by 15% within the next quarter.
+   * **Competitive Pricing & Value:** A competitive pricing analysis is recommended to ensure fiber optic offerings align with market rates and perceived customer value. This could involve tiered pricing models or bundled packages. Target: Reduce fiber optic churn by 15% within the next quarter.
 
-     **Proactive Support & Reliability:** Proactive network monitoring and a dedicated, specialized fiber optic support team are recommended to address technical issues promptly and improve service reliability. Target: Increase fiber optic customer satisfaction (measured by CSAT surveys) by 20%.
+   * **Proactive Support & Reliability:** Proactive network monitoring and a dedicated, specialized fiber optic support team are recommended to address technical issues promptly and improve service reliability. Target: Increase fiber optic customer satisfaction (measured by CSAT surveys) by 20%.
 
 2. **Increase Streaming Subscriber Engagement & Retention:**
 
-     **Personalized Recommendations:** Implementing a personalized content recommendation system for streaming subscribers can enhance engagement and perceived value. Target: Increase average streaming service usage per subscriber by 10%.
+   * **Personalized Recommendations:** Implementing a personalized content recommendation system for streaming subscribers can enhance engagement and perceived value. Target: Increase average streaming service usage per subscriber by 10%.
 
-     **Targeted Retention Offers:** Targeted retention campaigns for at-risk streaming subscribers (e.g., month-to-month contracts, short tenure) with personalized incentives can improve loyalty.
+   * **Targeted Retention Offers:** Targeted retention campaigns for at-risk streaming subscribers (e.g., month-to-month contracts, short tenure) with personalized incentives can improve loyalty.
        -Target: Reduce churn among this at-risk group by 25%.
 
 3. **Optimize the New Streaming Subscriber Experience:**
 
-     **Streamlined Onboarding:** A streamlined and engaging onboarding process with personalized tutorials and proactive support can significantly improve the initial streaming experience.
+   * **Streamlined Onboarding:** A streamlined and engaging onboarding process with personalized tutorials and proactive support can significantly improve the initial streaming experience.
        -Target: Increase new subscriber satisfaction with the onboarding process by 15%.
 
-     **Incentivize Early Usage:** Time-limited incentives like discounted rates or premium content access during the first few months can encourage continued streaming service usage and habit formation.
+   * **Incentivize Early Usage:** Time-limited incentives like discounted rates or premium content access during the first few months can encourage continued streaming service usage and habit formation.
        -Target: Increase new streaming subscriber retention by 10% within the first six months.
 
 4. **Understand Non-Streamer Churn Drivers:** Analyzing non-streamer churn is crucial.
 
-     **Customer Feedback Collection:** Surveys and focus groups can identify the reasons for non-streamer churn, enabling targeted interventions to address their specific needs and concerns.
+   * **Customer Feedback Collection:** Surveys and focus groups can identify the reasons for non-streamer churn, enabling targeted interventions to address their specific needs and concerns.
        -Target: Identify the top three drivers of non-streamer churn and implement targeted mitigation strategies.
   
 ## Conclusion
