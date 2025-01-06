@@ -127,20 +127,20 @@ An interactive dashboard was created using Tableau to provide visually compellin
 ## Recommendations
 This analysis reveals key opportunities to reduce customer churn and boost revenue, particularly within the valuable streaming subscriber segment:
 
-*1. **Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate (41.89%) signals a critical area for improvement.
+1. **Enhance the Fiber Optic Customer Experience:** The high fiber optic churn rate (41.89%) signals a critical area for improvement.
 
 * **Competitive Pricing & Value:** A competitive pricing analysis is recommended to ensure fiber optic offerings align with market rates and perceived customer value. This could involve tiered pricing models or bundled packages. Target: Reduce fiber optic churn by 15% within the next quarter.
 
 * **Proactive Support & Reliability:** Proactive network monitoring and a dedicated, specialized fiber optic support team are recommended to address technical issues promptly and improve service reliability. Target: Increase fiber optic customer satisfaction (measured by CSAT surveys) by 20%.
 
-*2. **Increase Streaming Subscriber Engagement & Retention:**
+2. **Increase Streaming Subscriber Engagement & Retention:**
 
 * **Personalized Recommendations:** Implementing a personalized content recommendation system for streaming subscribers can enhance engagement and perceived value. Target: Increase average streaming service usage per subscriber by 10%.
 
 * **Targeted Retention Offers:** Targeted retention campaigns for at-risk streaming subscribers (e.g., month-to-month contracts, short tenure) with personalized incentives can improve loyalty.
   -Target: Reduce churn among this at-risk group by 25%.
 
-*3. **Optimize the New Streaming Subscriber Experience:**
+3. **Optimize the New Streaming Subscriber Experience:**
 
 * **Streamlined Onboarding:** A streamlined and engaging onboarding process with personalized tutorials and proactive support can significantly improve the initial streaming experience.
     -Target: Increase new subscriber satisfaction with the onboarding process by 15%.
@@ -148,6 +148,6 @@ This analysis reveals key opportunities to reduce customer churn and boost reven
 * **Incentivize Early Usage:** Time-limited incentives like discounted rates or premium content access during the first few months can encourage continued streaming service usage and habit formation.
     -Target: Increase new streaming subscriber retention by 10% within the first six months.
 
-*4. **Understand Non-Streamer Churn Drivers:** Analyzing non-streamer churn is crucial.
+4. **Understand Non-Streamer Churn Drivers:** Analyzing non-streamer churn is crucial.
 
 * **Customer Feedback Collection:** Surveys and focus groups can identify the reasons for non-streamer churn, enabling targeted interventions to address their specific needs and concerns. Target: Identify the top three drivers of non-streamer churn and implement targeted mitigation strategies.
