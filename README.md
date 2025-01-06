@@ -26,9 +26,9 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 ### Tools
 
 * **Excel:** Data cleaning and preparation.
-* **SQL Server:** Data validation and exploratory data analysis.
+* **[SQL Server](data_manipulation.csv):** Data validation and exploratory data analysis.
 * **R:**  In-depth exploratory data analysis, and visualization.
-* **Tableau:** Interactive dashboard creation.
+* **[Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1):** Interactive dashboard creation.
 
 ## Data Cleaning and Preparation
 
@@ -126,7 +126,7 @@ This analysis reveals a complex relationship between internet service type, stre
 Churned streaming subscribers have a significantly shorter average tenure (23.9 months) compared to non-churned subscribers (45.7 months). This reinforces the importance of focusing retention efforts on newer streaming customers.  Strategies to improve early engagement and satisfaction with streaming services are crucial for reducing churn within this segment. The significant difference in average tenure emphasizes the need to identify specific pain points or areas of dissatisfaction that lead to early churn among streaming subscribers. This might include proactively addressing technical issues, offering personalized onboarding experiences, or providing incentives for continued service usage during the initial months of subscription. Proactive measures during this critical early stage can foster long-term customer loyalty.
 
 ## Interactive Dashboard
-An interactive dashboard was created using Tableau to provide visually compelling exploration of the key findings related to customer churn.
+An interactive dashboard was created using [Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1) to provide visually compelling exploration of the key findings related to customer churn.
 
 ## Recommendations
 This analysis reveals key opportunities to reduce customer churn and boost revenue, particularly within the valuable streaming subscriber segment:
