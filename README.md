@@ -12,7 +12,7 @@ This project analyzes customer churn in a telecommunication company using the Te
   - [Data source](#data-source)
   - [Tools](#tools)
   - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
-  - [Exploratory Data Analysis](#exploratory-data-analysis)
+  - [Exploratory Data Analysis](#exploratory-data-analysis-(eda))
   - [Data Analysis and Visualisation](#data-analysis-and-visualisation)
   - [Recommendation](#recommendation)
   - [Limitations](#limitations)
