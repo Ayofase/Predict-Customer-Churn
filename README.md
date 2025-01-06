@@ -52,8 +52,8 @@ The following SQL queries were performed to gain initial insights into customer 
     * **Churned Customers:** 1869
     * **Non-Churned Customers:** 5174
     * **Streaming Service Subscribers:** 3499
-    * **Average Monthly Charges for Streaming Subscribers:** $86.03 
-    * **Average Total Charges for Streaming Subscribers:** $3486.83
+    * **Average Monthly Charges:** $64.76
+    * **Average Total Charges:** $2283.30
       
      ```sql
     SELECT COUNT(*) AS total_customers,                                                                            
@@ -79,23 +79,37 @@ The following SQL queries were performed to gain initial insights into customer 
 * **Question:** How does customer tenure relate to churn?
 * **Average Tenure for Churned vs. Non-Churned:** As expected, there's a strong relationship between tenure and churn.  Churned customers have a significantly shorter average tenure (17.98 months) compared to non-churned customers (37.57 months). This confirms that longer-tenured customers are more likely to stay with the company, while newer customers are more prone to churn. This highlights the importance of focusing on customer retention strategies during the early stages of the customer lifecycle.
    
-## Data Analysis in R
+## Data Analysis and Visulaisation
 
 This section presents deeper explorations performed in R, building upon the initial insights gained from the SQL EDA. The focus is on comparing streaming subscribers to non-streamers to understand churn drivers.
 
+**Overall Churn Rate by Streaming Status:** Streaming subscribers have a notably higher churn rate (30.32%) compared to non-streaming customers (22.80%). This difference suggests that streaming service usage, or factors related to it, might be contributing to increased churn. Further investigation is needed to understand the specific drivers behind this discrepancy. This finding underscores the importance of focusing on customer retention strategies specifically targeted at streaming subscribers.
 
+**Churn Rate by Contract Type (Streaming Subscribers):**
+![churn_rate_by_contract_streaming](https://github.com/user-attachments/assets/f7a1d63c-852b-448c-99da-57900bd2a1b6)
 
-**1. Churn Rate by Tenure and Streaming Status:**
+* **Month-to-month:**  Customers with month-to-month contracts have the highest churn rates.  Streamers in this category churn at a significantly higher rate (49.4%) than non-streamers (37.0%).
+* **One year:** Churn rates are substantially lower for customers with one-year contracts. However, streamers still churn at a higher rate (17.0%) than non-streamers (4.01%).
+* **Two year:**  Customers with two-year contracts have the lowest churn rates overall. Streamers have a slightly higher churn rate (4.29%) compared to non-streamers (1.24%), but both are significantly lower than other contract types.
 
+This analysis reveals the strong influence of contract type on churn, with month-to-month contracts being the most vulnerable to churn, especially among streaming subscribers. Encouraging customers to switch to longer-term contracts, particularly streamers who demonstrate higher churn in month-to-month but low churn in longer term contracts is a key retention strategy.  While the analysis further reveals streaming customers on one-year contracts churn significantly more than non-streamers. Incentives and special offers could be introduced to encourage streamers to upgrade to a two-year contract to benefit from the lower churn rates observed there.  Understanding the motivations of streamers who churn despite having longer contracts is crucial for developing tailored interventions. Investigating specific reasons for churning on one-year contracts among streamers would provide insights into how to improve customer loyalty for different groups.
+
+**Churn Rate by Tenure and Streaming Status:**
 ![churn_rate_by_tenure_streaming](https://github.com/user-attachments/assets/eef7d1db-fc0d-4953-a0e5-518e33d799d4)
 
 This line graph displays the churn rate across different tenure lengths, comparing streamers and non-streamers. As seen in the SQL EDA, churn rate generally decreases with longer tenure. This visualization further reveals whether this trend differs between streaming and non-streaming customers. The line graph shows that churn rate decreases with longer tenure for both streaming and non-streaming customers.  However, streaming customers consistently exhibit a higher churn rate throughout the tenure period.  Churn is highest in the first month (85% for streamers, 56% for non-streamers) and lowest at 72 months (0% and 2%, respectively).  This indicates that while tenure is a strong predictor of churn for both groups, streaming customers are more likely to churn regardless of how long they've been with the company. This highlights the need to investigate factors specific to streaming services that might be contributing to this elevated churn rate.
 
-* **Churn Rate and Average Charges by Streaming Service Subscription:** [Link to a visualization comparing churn rates and average charges for streamers vs. non-streamers].  Streaming subscribers have a slightly higher churn rate (30.01%) compared to the overall churn rate (26.54%), and also have higher average monthly (\$73.02 vs \$[Value]) and total charges (\$2501.73 vs \$[Value]). *Show the r-code and the result in your README.* *This comparison provides further insight to answer another EDA question - How much do streaming service subscribers pay on average each month and total?* This is highly relevant. Targetting these customers with higher charges with exceptional services would be necessary to retain these valuable customer segment. *Interpreting the findings and connecting them with business decision is a very valuable skill to showcase to recruiters.*
+**Churn Rate and Average Charges and Streaming Status:** Non-Streaming subscribers have a slightly Non-streaming subscribers unexpectedly churn slightly more (34.4%) than streaming subscribers (30.3%), despite lower average monthly charges ($60.90 vs. 86.00) and average total charges(1417 vs. $3487). This indicates a substantial churn rate even among higher-value streaming customers. Further investigation is needed to understand churn drivers for both groups: Why are non-streamers leaving despite lower costs? What factors beyond streaming impact churn? Targeted discounts or loyalty programs, alongside addressing service quality issues, could improve streamer retention. For non-streamers, understanding their churn reasons is key, especially given their lower revenue contribution.
 
-* **Churn Rate by Internet Service Type (Streaming Subscribers):** [Link to visualization]. *Interpret this visualisation. State the values calculated and compare them.*  As discussed in the SQL analysis, Fiber optic customers have a significantly higher churn rate, which warrants further investigation.
+**Churn Rate by Internet Service Type and Streaming Status:**
 
-* **Churn Rate by Contract Type (Streaming Subscribers):** [Link to visualization]. *Focus on what contract type has higher churn and suggest how the company can increase customer retention based on this insight.*
+![churn_rate_by_internet_streaming](https://github.com/user-attachments/assets/4d470a9f-2464-4ffb-95df-fe23bd0f19ad)
+
+ * **Fiber optic:**  Customers with fiber optic internet have the highest churn rates, with non-streamers churning significantly more (46.6%) than streamers (39.9%).
+ * **DSL:**  DSL customers churn less than fiber optic customers, and the difference between streamers (14.2%) and non-streamers (24.5%) is more pronounced. Streamers using DSL churn significantly less.
+ * **No internet service:**  As expected, customers with no internet service have the lowest churn rate (7.40%). This group consists entirely of non-streamers, as streaming requires an internet connection.
+
+This analysis reveals a complex relationship between internet service type, streaming status, and churn. The high churn rate for fiber optic customers, regardless of streaming status, suggests potential issues with fiber optic service quality, pricing, or competition.  The lower churn rate among DSL streamers compared to DSL non-streamers indicates that providing a good DSL experience might be an effective retention strategy for this segment. Further investigation should explore the specific reasons driving churn within each internet service and streaming status group to develop targeted retention initiatives.
 
 
 * **Average Tenure for Churned vs. Non-Churned Streaming Subscribers:** [Link to visualization]. *Interpret the result and provide insight based on the result. State the average tenure values for both groups.* This is crucial for the business to evaluate customer behaviour and predict potential churn, informing retention strategies.
