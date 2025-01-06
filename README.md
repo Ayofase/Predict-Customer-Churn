@@ -12,7 +12,7 @@ This project analyzes customer churn in a telecommunication company using the Te
   - [Data source](#data-source)
   - [Tools](#tools)
   - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
-  - [Exploratory Data Analysis](#exploratory-data-analysis-(eda))
+  - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Data Analysis and Visualisation](#data-analysis-and-visualisation)
   - [Recommendation](#recommendation)
   - [Limitations](#limitations)
@@ -46,7 +46,7 @@ The [cleaned data](telcom_data.csv) was then imported into SQL Server, where add
 
 * **Churn Column Validation:**  The churn column, the target variable for this analysis, was validated by checking its distinct values, which were confirmed to be 'Yes' and 'No'.
 
-## Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis
 The following [SQL](telecom_data_manipulation.sql) queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R
 
 **Overall Churn rate:**
