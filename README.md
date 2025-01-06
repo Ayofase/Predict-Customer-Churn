@@ -1,3 +1,6 @@
+
+![Telcom_churn_dashboard](https://github.com/user-attachments/assets/9d8ea918-b9b9-4bdb-a063-719191ae9c9b)
+
 # Reducing Churn: A Comparative Analysis of Streaming and Non-Streaming Subscribers
 
 ## Project Overview
@@ -27,7 +30,7 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 
 * **Excel:** Data cleaning and preparation.
 * **[SQL Server](data_manipulation.csv):** Data validation and exploratory data analysis.
-* **R:**  In-depth exploratory data analysis, and visualization.
+* **[R](telcom_churn_analysis.R):**  In-depth exploratory data analysis, and visualization.
 * **[Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1):** Interactive dashboard creation.
 
 ## Data Cleaning and Preparation
