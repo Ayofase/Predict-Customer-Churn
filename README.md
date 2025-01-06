@@ -14,9 +14,9 @@ This project analyzes customer churn in a telecommunication company using the Te
   - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
   - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Data Analysis and Visualisation](#data-analysis-and-visualisation)
-  - [Results](#results)
   - [Recommendation](#recommendation)
   - [Limitations](#limitations)
+  - [Conclusion](#conclusion)
 
 ### Project Goals
 
