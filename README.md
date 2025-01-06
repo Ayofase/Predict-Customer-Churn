@@ -38,13 +38,13 @@ Initial data cleaning was performed in Excel:
 2. **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
 3. **Duplicate Removal:** The dataset was checked for duplicate customer_id values to ensure data integrity. No duplicates were found.
 
-The cleaned data] was then imported into SQL Server, where additional data quality checks and validation were performed:
-* **Data Quality Checks in SQL:** Data integrity was verified in SQL Server by checking row and column counts against the cleaned Excel data, confirming consistent data types, and ensuring the customer_id primary key contained no NULL values or duplicates. These checks are essential for maintaining data accuracy and reliability throughout the analysis.
+The [cleaned data](telcom_data.csv) was then imported into SQL Server, where additional data quality checks and validation were performed:
+* **Data Quality Checks in [SQL](telcom_data_cleaning_and_quality_checks.sql):** Data integrity was verified in SQL Server by checking row and column counts against the cleaned Excel data, confirming consistent data types, and ensuring the customer_id primary key contained no NULL values or duplicates. These checks are essential for maintaining data accuracy and reliability throughout the analysis.
 
 * **Churn Column Validation:**  The churn column, the target variable for this analysis, was validated by checking its distinct values, which were confirmed to be 'Yes' and 'No'.
 
 ## Exploratory Data Analysis (EDA)
-The following SQL queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R
+The following [SQL](telcom_data_manipulation.sql) queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R
 
 **Overall Churn rate:**
 
