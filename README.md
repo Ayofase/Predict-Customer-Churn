@@ -37,14 +37,14 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 
 Initial data cleaning was performed in Excel:
 
-1. **Data Type Standardization:** Column names were converted from CamelCase to snake_case for consistency with SQL and R.  The `total_charges`, `monthly_charges`, and `tenure` columns were converted to numeric data to enable mathematical operations and statistical analysis."types.
-2. **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
-3. **Duplicate Removal:** The dataset was checked for duplicate customer_id values to ensure data integrity. No duplicates were found.
+- **Data Type Standardization:** Column names were converted from CamelCase to snake_case for consistency with SQL and R.  The `total_charges`, `monthly_charges`, and `tenure` columns were converted to numeric data to enable mathematical operations and statistical analysis."types.
+- **Missing Value Handling:**  No missing values were found in the dataset after the initial cleaning.
+- **Duplicate Removal:** The dataset was checked for duplicate customer_id values to ensure data integrity. No duplicates were found.
 
 The [cleaned data](telcom_data.csv) was then imported into SQL Server, where additional data quality checks and validation were performed:
-* **Data Quality Checks in [SQL](telecom_data_cleaning_and_quality_checks.sql):** Data integrity was verified in SQL Server by checking row and column counts against the cleaned Excel data, confirming consistent data types, and ensuring the customer_id primary key contained no NULL values or duplicates. These checks are essential for maintaining data accuracy and reliability throughout the analysis.
+- **Data Quality Checks in [SQL](telecom_data_cleaning_and_quality_checks.sql):** Data integrity was verified in SQL Server by checking row and column counts against the cleaned Excel data, confirming consistent data types, and ensuring the customer_id primary key contained no NULL values or duplicates. These checks are essential for maintaining data accuracy and reliability throughout the analysis.
 
-* **Churn Column Validation:**  The churn column, the target variable for this analysis, was validated by checking its distinct values, which were confirmed to be 'Yes' and 'No'.
+- **Churn Column Validation:**  The churn column, the target variable for this analysis, was validated by checking its distinct values, which were confirmed to be 'Yes' and 'No'.
 
 ## Exploratory Data Analysis
 The following [SQL](telecom_data_manipulation.sql) queries were performed to gain initial insights into customer churn, with a particular focus on streaming service subscribers. This exploration helps identify potential churn drivers and inform further analysis in R
