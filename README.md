@@ -55,12 +55,12 @@ The following [SQL](telecom_data_manipulation.sql) queries were performed to gai
   **Overall Churn Rate:** 26.54% of total customers churned. This serves as a baseline for comparison with specific customer segments.
    
    **Key Customer Metrics:**
-     - **Total Customers:** 7043
-     - **Churned Customers:** 1869
-     - **Non-Churned Customers:** 5174
-     - **Streaming Service Subscribers:** 3499
-     - **Average Monthly Charges:** $64.76
-     - **Average Total Charges:** $2283.30
+  - **Total Customers:** 7043
+  - **Churned Customers:** 1869
+  - **Non-Churned Customers:** 5174
+  - **Streaming Service Subscribers:** 3499
+  - **Average Monthly Charges:** $64.76
+  - **Average Total Charges:** $2283.30
       
      ```sql
     SELECT COUNT(*) AS total_customers,                                                                            
