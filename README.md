@@ -1,10 +1,10 @@
 
 ![Telcom_churn_dashboard](https://github.com/user-attachments/assets/9d8ea918-b9b9-4bdb-a063-719191ae9c9b)
 
-# Reducing Churn: A Comparative Analysis of Streaming and Non-Streaming Subscribers
+# Predict Customer Churn: A Comparative Analysis of Streaming and Non-Streaming Subscribers
 
 ## Project Overview
-This project analyzes customer churn in a telecommunication company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R and an interactive dashboard using Tableau. A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, suggesting potential issues with service reliability or pricing strategies within this segment. Further investigation will focus on identifying the root causes of this discrepancy.
+This project analyzes and predict customer churn in a telecommunication company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers and also develop a robust machine learning model that can proactively predict which customers are at high risk of churning. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R, an interactive dashboard using Tableau and developing multiple tree-based classification models (Decision Tree, Random Forest, XGBoost) to predict churn. A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, suggesting potential issues with service reliability or pricing strategies within this segment.  The models are systematically tuned and evaluated not just for accuracy, but for business-critical metrics like Recall, Precision, and F1-Score to ensure the final model provides actionable intelligence for customer retention strategies.
 
 
 ## Table Of Content
@@ -14,14 +14,17 @@ This project analyzes customer churn in a telecommunication company using the Te
   - [Data Cleaning and Preparation](#data-cleaning-and-preparation)
   - [Exploratory Data Analysis](#exploratory-data-analysis)
   - [Data Analysis and Visualisation](#data-analysis-and-visualisation)
+  - [Feature Engineering](#feature-engineering)
+  - [Model Development and Hyperparameter Tuning](#model-development-and-hyperparameter-tuning)
+  - [Model Evaluation](#model-evaluation)
   - [Recommendation](#recommendation)
   - [Limitations](#limitations)
   - [Conclusion](#conclusion)
 
+
 ### Project Goals
 
-The primary goal of this project is to analyze customer behavior and service usage patterns to understand the key drivers of churn.  The analysis will focus on identifying specific areas for improvement in customer retention, particularly among subscribers to streaming services. This will involve developing data-driven recommendations such as targeted promotions, optimized pricing strategies, or improvements to service quality.
-
+The primary goal of this project is to analyze customer behavior and service usage patterns to understand the key drivers of churn and to predict customer likely to churn. The analysis will focus on identifying specific areas for improvement in customer retention, particularly among subscribers to streaming services. 
 ### Data source
 
 This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.com/datasets/blastchar/telco-customer-churn?resource=download), This dataset contains information on approximately 7,043 customers and includes demographics, subscribed services (including streaming TV and movies), account information (tenure, contract type, payment method, etc.), and churn status.  the dataset also includes information on the type of internet service each customer uses (DSL, Fiber optic, etc.), which is a key factor in analyzing churn among streaming service subscribers.
@@ -32,6 +35,12 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 * **[SQL Server](data_manipulation.csv):** Data validation and exploratory data analysis.
 * **[R](telcom_churn_analysis.R):**  In-depth exploratory data analysis, and visualization.
 * **[Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1):** Interactive dashboard creation.
+* **Python:**
+* - Libraries: Pandas, NumPy for data manipulation.
+  - Libraries: Matplotlib, Seaborn for visualization.
+  - Libraries: Scikit-learn for feature engineering, model building (Decision Tree, Random Forest), hyperparameter tuning (GridSearchCV), and evaluation.
+  - Libraries: XGBoost for building the gradient boosting model.
+  - Libraries: Pickle for saving the final model.
 
 ## Data Cleaning and Preparation
 
@@ -139,6 +148,40 @@ This analysis reveals a complex relationship between internet service type, stre
 ### Average Tenure for Churned vs. Non-Churned Streaming Subscribers:
 
 Churned streaming subscribers have a significantly shorter average tenure (23.9 months) compared to non-churned subscribers (45.7 months). This reinforces the importance of focusing retention efforts on newer streaming customers. 
+
+## Feature Engineering
+Building on the insights from the EDA, several feature engineering were performed in Python to prepare the dataset for modeling:
+* **Creation of num_optional_services:** Based on the EDA finding that protective add-ons like Online Security and Tech Support were strong indicators of retention, a new numerical feature was engineered. This feature counts the number of key optional services (OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport) each customer subscribes to, creating a single powerful metric for customer investment.
+* **Target Variable and Categorical Feature Encoding:** The Churn column ('Yes'/'No') and all remaining categorical features were one-hot encoded convert them into a binary format suitable for the models
+* **Feature Selection:** An initial feature selection was performed by dropping features known to have no predictive value (customerID). Further feature refinement was guided by the feature importance results from the trained models.
+
+## Model Development and Hyperparameter Tuning
+Three tree-based classification models were developed to predict customer churn: Decision Tree, Random Forest and XGBoost (Extreme Gradient Boosting)
+
+To optimize model performance, GridSearchCV with 5-fold cross-validation was used to systematically tune key hyperparameters for each model. The primary goal of the tuning process was to find a model with the best overall ability to discriminate between churners and non-churners. Therefore, the models were optimized by setting refit='roc_auc', which selects the hyperparameter combination that maximizes the ROC AUC score during cross-validation.
+
+## Model Evaluation 
+Model Performance Comparison on Test Set:
+Model	          Accuracy  Precision (for Churn)	Recall (for Churn)	F1-Score (for Churn)	ROC AUC Score
+Decision Tree	   0.730	       0.49               0.76	               0.60	                 0.739
+Random Forest	   0.770	       0.56	              0.72	               0.63	                 0.758
+XGBoost        	 0.751	       0.52	              0.80	               0.63	                 0.767
+
+The evaluation reveals a clear trade-off between identifying the maximum number of churners (Recall) and ensuring the accuracy of those predictions (Precision).
+XGBoost stands out for its strategic performance. It achieved the highest Recall (80.0%), successfully identifying 4 out of 5 actual churners. It also delivered the highest ROC AUC Score (0.767), indicating it is the most robust model at distinguishing between the two classes. While its precision (52%) is modest, it achieved an F1-Score (0.63) that is tied with the Random Forest, making it an exceptional choice for a business strategy that prioritizes identifying at-risk customers.
+
+![xgb_evaluation](https://github.com/user-attachments/assets/cb2c9a95-3482-49b1-a605-94f2209fcf70)
+
+Given its superior ability to find actual churners (highest Recall) and its best-in-class discriminatory power (highest ROC AUC) while still maintaining a top-tier F1-Score, the tuned XGBoost model was selected as the final model for this project. It offers the most valuable and actionable intelligence for a proactive customer retention campaign.
+
+### Confusion Matrix
+
+![xgb_confusion_matrix](https://github.com/user-attachments/assets/19a7f778-0113-4215-b639-437ebac979c9)
+
+True Positives (Correctly Predicted Churn): 299
+False Negatives (Missed Churners): 75
+True Negatives (Correctly Predicted No Churn): 757
+False Positives (Incorrectly Predicted Churn): 299
 
 ## Interactive Dashboard
 An interactive dashboard was created using [Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1) to provide visually compelling exploration of the key findings related to customer churn.
