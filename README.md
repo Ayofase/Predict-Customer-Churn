@@ -179,10 +179,10 @@ Given its superior ability to find actual churners (highest Recall) and its best
 
 ![xgb_confusion_matrix](https://github.com/user-attachments/assets/19a7f778-0113-4215-b639-437ebac979c9)
 
-True Positives (Correctly Predicted Churn): 299
-False Negatives (Missed Churners): 75
-True Negatives (Correctly Predicted No Churn): 757
-False Positives (Incorrectly Predicted Churn): 299
+* True Positives (Correctly Predicted Churn): 299
+* False Negatives (Missed Churners): 75
+* True Negatives (Correctly Predicted No Churn): 757
+* False Positives (Incorrectly Predicted Churn): 279
 
 ## Interactive Dashboard
 An interactive dashboard was created using [Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1) to provide visually compelling exploration of the key findings related to customer churn.
