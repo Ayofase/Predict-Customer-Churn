@@ -149,6 +149,9 @@ This analysis reveals a complex relationship between internet service type, stre
 
 Churned streaming subscribers have a significantly shorter average tenure (23.9 months) compared to non-churned subscribers (45.7 months). This reinforces the importance of focusing retention efforts on newer streaming customers. 
 
+## Interactive Dashboard
+An interactive dashboard was created using [Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1) to provide visually compelling exploration of the key findings related to customer churn.
+
 ## Feature Engineering
 Building on the insights from the EDA, several feature engineering were performed in Python to prepare the dataset for modeling:
 * **Creation of num_optional_services:** Based on the EDA finding that protective add-ons like Online Security and Tech Support were strong indicators of retention, a new numerical feature was engineered. This feature counts the number of key optional services (OnlineSecurity, OnlineBackup, DeviceProtection, TechSupport) each customer subscribes to, creating a single powerful metric for customer investment.
@@ -183,9 +186,6 @@ Given its superior ability to find actual churners (highest Recall) and its best
 * False Negatives (Missed Churners): 75
 * True Negatives (Correctly Predicted No Churn): 757
 * False Positives (Incorrectly Predicted Churn): 279
-
-## Interactive Dashboard
-An interactive dashboard was created using [Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1) to provide visually compelling exploration of the key findings related to customer churn.
 
 ## Recommendations
 This analysis reveals key opportunities to reduce customer churn and boost revenue, particularly within the valuable streaming subscriber segment:
