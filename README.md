@@ -1,7 +1,7 @@
 
 ![Telcom_churn_dashboard](https://github.com/user-attachments/assets/9d8ea918-b9b9-4bdb-a063-719191ae9c9b)
 
-# Predict Customer Churn: A Comparative Analysis of Streaming and Non-Streaming Subscribers
+# Reducing Churn And Optimizing Customer Success: From Analysis to Predictive Modeling
 
 ## Project Overview
 This project analyzes and predict customer churn in a telecommunication company using the Telco Customer Churn dataset from Kaggle. The goal is to identify key churn drivers and develop data-driven recommendations for improving customer retention, with a particular emphasis on streaming service subscribers and also develop a robust machine learning model that can proactively predict which customers are at high risk of churning. The analysis involves data cleaning, exploratory data analysis (EDA), and visualization using R, an interactive dashboard using Tableau and developing multiple tree-based classification models (Decision Tree, Random Forest, XGBoost) to predict churn. A key finding is that Fiber optic customers experience significantly higher churn rates despite it being ideal for streaming, suggesting potential issues with service reliability or pricing strategies within this segment.  The models are systematically tuned and evaluated not just for accuracy, but for business-critical metrics like Recall, Precision, and F1-Score to ensure the final model provides actionable intelligence for customer retention strategies.
