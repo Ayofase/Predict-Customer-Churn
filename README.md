@@ -35,7 +35,7 @@ This dataset used for the analysis is gotten from [Kaggle](https://www.kaggle.co
 * **[SQL Server](data_manipulation.csv):** Data validation and exploratory data analysis.
 * **[R](telcom_churn_analysis.R):**  In-depth exploratory data analysis, and visualization.
 * **[Tableau](https://public.tableau.com/app/profile/ayomide.fase2159/viz/TelcomChurn_17360950840870/Dashboard1):** Interactive dashboard creation.
-* **Python:**
+* **[Python:](telco_customer_churn_prediction.ipynb)**
 * - Libraries: Pandas, NumPy for data manipulation.
   - Libraries: Matplotlib, Seaborn for visualization.
   - Libraries: Scikit-learn for feature engineering, model building (Decision Tree, Random Forest), hyperparameter tuning (GridSearchCV), and evaluation.
