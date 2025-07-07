@@ -167,9 +167,9 @@ To optimize model performance, GridSearchCV with 5-fold cross-validation was use
 Model Performance Comparison on Test Set:
 |   Model	      |  Accuracy | Precision (for Churn) |	Recall (for Churn) |	F1-Score (for Churn)|	ROC AUC Score
 |---------------|-----------|-----------------------|--------------------|----------------------|--------------|
-| Decision Tree |	  0.730	  |        0.49           |        0.76	       |          0.60	      |      0.739   |
-| Random Forest	|   0.770	  |        0.56	          |        0.72	       |          0.63	      |      0.758   |
-| XGBoost       | 	0.751	  |        0.52	          |        0.80	       |          0.63	      |      0.767   |
+| Decision Tree |	  0.73 	  |        0.49           |        0.76	       |          0.60	      |      0.74    |
+| Random Forest	|   0.77 	  |        0.56	          |        0.72	       |          0.63	      |      0.76    |
+| XGBoost       | 	0.75 	  |        0.52	          |        0.80	       |          0.63	      |      0.77    |
 
 The evaluation reveals a clear trade-off between identifying the maximum number of churners (Recall) and ensuring the accuracy of those predictions (Precision).
 XGBoost stands out for its strategic performance. It achieved the highest Recall (80.0%), successfully identifying 4 out of 5 actual churners. It also delivered the highest ROC AUC Score (0.767), indicating it is the most robust model at distinguishing between the two classes. While its precision (52%) is modest, it achieved an F1-Score (0.63) that is tied with the Random Forest, making it an exceptional choice for a business strategy that prioritizes identifying at-risk customers.
